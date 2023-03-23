@@ -3,7 +3,7 @@ def Gesture_Control():
     import cv2
     import os
     import numpy as np
-    from auto import open_file,start_presentation,move_left,move_right,close_presentation
+    from autobot import open_file,start_presentation,move_left,move_right,close_presentation
  
     # Parameters
     width, height = 500, 500
@@ -47,11 +47,12 @@ def Gesture_Control():
             xVal = int(np.interp(lmList[8][0], [width // 2, width], [0, width]))
             yVal = int(np.interp(lmList[8][1], [150, height-150], [0, height]))
             indexFinger = xVal, yVal
+            cv2.imshow("Image", img)
     
             if cy <= gestureThreshold:  # If hand is at the height of the face
-                if fingers==[1,1,0,0,0] and q_count==0:
-                    open_file()
-                    q_count=1
+                # if fingers==[1,1,0,0,0] and q_count==0:
+                #     open_file()
+                #     q_count=1
                 if fingers==[1,1,1,0,0] and w_count==0:
                     start_presentation()
                     # w_count=1
@@ -64,10 +65,14 @@ def Gesture_Control():
                     move_right()
                 if fingers==[0,1,1,1,1]:
                     close_presentation()
+                if fingers==[1,1,1,1,1]:
+                    break
+    
+                
                     # w_count=0
+    cv2.destroyAllWindows
+        
     
-        cv2.imshow("Image", img)
-    
-        key = cv2.waitKey(1)
-        if key == ord('q'):
-            break
+        # key = cv2.waitKey(1)
+        # if key == ord('q'):
+        #     break
