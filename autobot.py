@@ -26,7 +26,7 @@ pe.press("win")
     # pe.keyUp('win')
     # pe.keyUp('s')
 
-pe.write('Hand Gesture Mini Project',interval=0.2)
+pe.write(' Hand Gesture Mini Project',interval=0.2)
 pe.press("enter")
 Gesture_Control()
     
